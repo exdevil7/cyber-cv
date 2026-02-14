@@ -21,7 +21,7 @@ export const Header = () => {
                         animate={{ opacity: 1, x: 0 }}
                         className="text-2xl font-black font-orbitron tracking-tighter italic gradient-text px-2 group-hover/logo:neon-text-cyan transition-all"
                     >
-                        CYBER CV
+                        CYBER_CV_OS
                     </motion.div>
                 </a>
 
