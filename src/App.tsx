@@ -38,7 +38,7 @@ function App() {
             transition={{ duration: 1 }}
           >
             <div className="flex flex-col lg:flex-row gap-16 items-stretch mb-32">
-              <SummarySection summary={cvData.summary} hudData={cvData.hudData} />
+              <SummarySection summary={cvData.summary} hudData={cvData.hudData} intel={cvData.intel} />
               <ContactHub data={cvData} />
             </div>
 

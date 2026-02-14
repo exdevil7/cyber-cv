@@ -12,9 +12,17 @@ interface SummarySectionProps {
         engine: string;
         status: string;
     };
+    intel: {
+        id: string;
+        type: string;
+        label: string;
+        content?: string;
+        trackId?: string;
+        footer: string;
+    }[];
 }
 
-export const SummarySection = ({ summary, hudData }: SummarySectionProps) => {
+export const SummarySection = ({ summary, hudData, intel }: SummarySectionProps) => {
     const [isMessageOpen, setIsMessageOpen] = useState(false);
 
     return (
@@ -55,7 +63,7 @@ export const SummarySection = ({ summary, hudData }: SummarySectionProps) => {
                             "text-xs lg:text-sm font-bold font-mono transition-colors",
                             isMessageOpen ? "text-retro-yellow" : "text-white/60 group-hover/msg:text-white"
                         )}>
-                            {isMessageOpen ? 'DECRYPTING...' : '1_NEW_INTEL'}
+                            {isMessageOpen ? 'DECRYPTING...' : `${intel.length}_NEW_INTEL`}
                         </span>
                     </div>
                 </div>
@@ -69,35 +77,63 @@ export const SummarySection = ({ summary, hudData }: SummarySectionProps) => {
                         exit={{ height: 0, opacity: 0 }}
                         className="overflow-hidden mb-6"
                     >
-                        <div className="p-4 bg-retro-yellow/5 border-l-4 border-retro-yellow/40 relative group/drawer terminal-glow-yellow">
-                            <div className="absolute inset-0 bg-retro-yellow/5 crt-flicker pointer-events-none"></div>
-                            <div className="flex items-center justify-between mb-3">
-                                <div className="flex items-center gap-2">
-                                    <Terminal size={12} className="text-retro-yellow" />
-                                    <span className="text-[8px] font-black font-orbitron text-retro-yellow tracking-widest uppercase">Decrypted_Intel: File_01</span>
+                        <div className="flex flex-col gap-2">
+                            {intel.map((item) => (
+                                <div key={item.id} className="p-3 bg-retro-yellow/5 border-l-4 border-retro-yellow/40 relative group/drawer terminal-glow-yellow">
+                                    <div className="absolute inset-0 bg-retro-yellow/5 crt-flicker pointer-events-none"></div>
+                                    <div className="flex items-center justify-between mb-3">
+                                        <div className="flex items-center gap-2">
+                                            <Terminal size={12} className="text-retro-yellow" />
+                                            <span className="text-[8px] font-black font-orbitron text-retro-yellow tracking-widest uppercase">{item.label}</span>
+                                        </div>
+                                    </div>
+
+                                    {item.type === 'text' && item.content && (
+                                        <p className="text-sm font-bold font-mono text-white/90 italic leading-relaxed pl-4 border-l border-retro-yellow/20">
+                                            {">> "}
+                                            <ScrambleEffect
+                                                text={item.content}
+                                                duration={2000}
+                                                className="font-mono lowercase italic tracking-normal normal-case"
+                                            />
+                                        </p>
+                                    )}
+
+                                    {item.type === 'audio' && item.trackId && (
+                                        <div className="relative z-10 border border-retro-yellow/20 rounded-[12px] overflow-hidden">
+                                            <div className="absolute inset-0 bg-retro-yellow/10 pointer-events-none z-20 mix-blend-overlay"></div>
+                                            <iframe
+                                                style={{ borderRadius: '12px' }}
+                                                src={`https://open.spotify.com/embed/track/${item.trackId}?utm_source=generator&theme=0`}
+                                                width="100%"
+                                                height="152"
+                                                frameBorder="0"
+                                                allowFullScreen
+                                                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture"
+                                                loading="lazy"
+                                                className="opacity-90 hover:opacity-100 transition-opacity relative z-10"
+                                            ></iframe>
+                                        </div>
+                                    )}
+
+                                    <div className="mt-3 flex items-center justify-between text-[7px] font-mono uppercase tracking-[0.2em] text-retro-yellow/40">
+                                        <span>{item.footer}</span>
+                                        <div className="flex gap-1">
+                                            {[1, 2, 3].map(i => (
+                                                <div key={i} className="w-1 h-1 bg-retro-yellow/20 rounded-full animate-pulse" style={{ animationDelay: `${i * 200}ms` }}></div>
+                                            ))}
+                                        </div>
+                                    </div>
                                 </div>
+                            ))}
+
+                            <div className="flex justify-end mt-1">
                                 <button
                                     onClick={() => setIsMessageOpen(false)}
-                                    className="text-[10px] uppercase font-orbitron text-retro-yellow/40 hover:text-retro-yellow transition-colors"
+                                    className="text-[10px] uppercase font-orbitron text-retro-yellow/40 hover:text-retro-yellow transition-colors bg-retro-yellow/5 px-2 py-1"
                                 >
                                     [Close_Session]
                                 </button>
-                            </div>
-                            <p className="text-sm font-bold font-mono text-white/90 italic leading-relaxed pl-4 border-l border-retro-yellow/20">
-                                {">> "}
-                                <ScrambleEffect
-                                    text="DECRYPTED: While waiting for my next mission, I started vibecoding. [SUCCESS] One Friday night later, this dashboard went live. Ready to deploy on your signal. // EOF"
-                                    duration={2000}
-                                    className="font-mono lowercase italic tracking-normal normal-case"
-                                />
-                            </p>
-                            <div className="mt-4 flex items-center justify-between text-[7px] font-mono uppercase tracking-[0.2em] text-retro-yellow/30">
-                                <span>Auth_Sequence: v-engineer-01 // Verified</span>
-                                <div className="flex gap-1">
-                                    {[1, 2, 3].map(i => (
-                                        <div key={i} className="w-1 h-1 bg-retro-yellow/20 rounded-full animate-pulse" style={{ animationDelay: `${i * 200}ms` }}></div>
-                                    ))}
-                                </div>
                             </div>
                         </div>
                     </motion.div>

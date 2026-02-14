@@ -173,5 +173,22 @@ export const cvData = {
         expLevel: "06_Y+",
         engine: "JAVA_SPRING",
         status: "OPEN_TO_WORK"
-    }
+    },
+
+    intel: [
+        {
+            id: "File_01",
+            type: "text",
+            label: "Decrypted_Intel: File_01",
+            content: "DECRYPTED: While waiting for my next mission, I started vibecoding. [SUCCESS] One Friday night later, this dashboard went live. Ready to deploy on your signal. // EOF",
+            footer: "Auth_Sequence: v-engineer-01 // Verified"
+        },
+        {
+            id: "Audio_Log_02",
+            type: "audio",
+            label: "Decrypted_Intel: Audio_Log_02",
+            trackId: "17unhA5Gnc1nLFdg3dKmuO",
+            footer: "Auth_Sequence: v-audio-01 // Verified"
+        }
+    ]
 };
