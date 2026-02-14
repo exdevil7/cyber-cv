@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Briefcase, Award } from 'lucide-react';
-import { Section } from './Section';
+import { Section } from '../components/Section';
 
 interface Experience {
     role: string;

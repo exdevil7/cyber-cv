@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { Code2 } from 'lucide-react';
-import { Section } from './Section';
-import { SkillBadge } from './SkillBadge';
+import { Section } from '../components/Section';
+import { SkillBadge } from '../components/SkillBadge';
 
 interface SkillItem {
     name: string;

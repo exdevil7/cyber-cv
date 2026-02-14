@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Award, Link as ExternalLink } from 'lucide-react';
-import { Section } from './Section';
+import { Section } from '../components/Section';
 
 interface Certification {
     name: string;

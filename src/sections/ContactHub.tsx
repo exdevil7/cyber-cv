@@ -1,6 +1,7 @@
 import { useState, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { MapPin, Phone, Check, Link as ExternalLink, Mail, Linkedin, Github } from 'lucide-react';
+import { ScrambleEffect } from '../components/ScrambleEffect';
 
 interface ContactHubProps {
     data: {
@@ -51,7 +52,11 @@ export const ContactHub = ({ data }: ContactHubProps) => {
                     </div>
                     <div className="flex flex-col overflow-hidden">
                         <span className={`text-[8px] font-black font-orbitron tracking-[0.2em] text-${colorClass}/60 uppercase`}>{label}</span>
-                        <span className="text-xs font-bold font-mono text-white truncate">{displayValue}</span>
+                        <ScrambleEffect
+                            text={displayValue}
+                            className="text-xs font-bold font-mono text-white truncate font-orbitron tracking-widest uppercase"
+                            duration={800}
+                        />
                     </div>
                     <div className="flex items-center gap-2">
                         {isCopied && (
@@ -91,7 +96,11 @@ export const ContactHub = ({ data }: ContactHubProps) => {
                                 <span className="w-[2px] h-2 bg-retro-purple animate-heartbeat [animation-delay:0.4s]"></span>
                             </span>
                         </span>
-                        <span className="text-xs font-bold font-mono text-white tracking-widest uppercase">{data.location}</span>
+                        <ScrambleEffect
+                            text={data.location}
+                            className="text-xs font-bold font-mono text-white tracking-widest uppercase font-orbitron"
+                            duration={1000}
+                        />
                     </div>
                 </div>
             </div>

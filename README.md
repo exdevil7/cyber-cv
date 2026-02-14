@@ -1,61 +1,60 @@
-# My CV
+# ⚡ CYBER CV
 
-An interactive digital curriculum vitae featuring a retrowave/cyberpunk aesthetic, built with React, TypeScript, and Vite.
+An interactive, high-tech digital curriculum vitae featuring a **Cyberpunk / Retrowave / Terminal** dashboard aesthetic. Built with React 19, TypeScript, and Framer Motion.
 
-## Tech Stack
+---
 
-- **Framework:** React 19
-- **Type Safety:** TypeScript
-- **Build Tool:** Vite 7
+## 🚀 LIVE DEMO
+
+View the interactive CV here: **[ivan-deineka-cv.vercel.app](https://ivan-deineka-cv.vercel.app)**
+
+Deployed on **Vercel** with official **GitHub integration** for automatic CI/CD.
+
+---
+
+## ✨ Advanced Features
+
+- **`ScrambleEffect`**: Rapid, high-intensity character randomization and color glitch text reveal.
+- **`TypingEffect`**: Variable-pacing terminal decryption animation with Japanese glyph injection and chromatic aberration.
+- **HUD Interface**: Real-time "System Status" and "Decrypted Intel" overlays for a deep-immersion technical aesthetic.
+- **Futuristic Layout**: Fragmented navigation pods, glassmorphic cards, and neon-pulse highlights.
+- **Interactive Contact Hub**: High-precision contact layout with "Fast-Copy" capabilities and social link integration.
+
+## 🛠️ Tech Stack
+
+- **Framework:** React 19 (Vite 7)
+- **Logic:** TypeScript
 - **Styling:** Tailwind CSS 4
-- **Animations:** Framer Motion
+- **Motion:** Framer Motion
 - **Icons:** Lucide React
 
-## Features
+## ⚙️ Development
 
-- **Interactive UI**: Clean, high-performance interface with modern aesthetics.
-- **Responsive Design**: Fully optimized for mobile and desktop viewing.
-- **Dynamic Content**: Data-driven structure using centralized configuration.
-- **Animated Components**: Smooth transitions and typing effects.
-
-## Getting Started
-
-### Prerequisites
-
-- Node.js (Latest LTS recommended)
-- npm
-
-### Installation
-
-1. Clone the repository:
+1. **Clone & Install**:
    ```bash
-   git clone [repository-url]
-   ```
-
-2. Install dependencies:
-   ```bash
+   git clone https://github.com/exdevil7/cyber-cv.git
    npm install
    ```
 
-3. Start the development server:
+2. **Launch Terminal**:
    ```bash
    npm run dev
    ```
 
-### Production Build
+3. **Production Build**:
+   ```bash
+   npm run build
+   ```
 
-To create a production-ready bundle:
-```bash
-npm run build
-```
+## 📂 Project Structure
 
-## Project Structure
-
-- `src/components/`: Reusable UI components.
-- `src/data/`: Centralized CV data and configuration.
-- `src/utils/`: Common utility functions.
-- `src/index.css`: Global styles and Tailwind configuration.
+- `src/layout/`: Structural frame components (Header, Footer).
+- `src/sections/`: Modular page blocks (Hero, Summary, Experience).
+- `src/components/`: Reusable atomic UI elements (Buttons, Animations).
+- `src/constants/`: Centralized configuration (Glitch data).
+- `src/data/`: Source of truth for CV content via `cvData.ts`.
 
 ---
 
-*Decrypting reality. One line of code at a time.*
+**“The future is already here — it's just not very evenly distributed.”**  
+*— William Gibson*

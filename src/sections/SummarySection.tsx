@@ -1,6 +1,7 @@
 import { Terminal, MessageSquare } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { TypingEffect } from './TypingEffect';
+import { TypingEffect } from '../components/TypingEffect';
+import { ScrambleEffect } from '../components/ScrambleEffect';
 import { useState } from 'react';
 import { cn } from '../utils/utils';
 
@@ -83,7 +84,12 @@ export const SummarySection = ({ summary, hudData }: SummarySectionProps) => {
                                 </button>
                             </div>
                             <p className="text-sm font-bold font-mono text-white/90 italic leading-relaxed pl-4 border-l border-retro-pink/20">
-                                {">> "}DECRYPTED: While waiting for my next mission, I started vibecoding. [SUCCESS] One Friday night later, this dashboard went live. Ready to deploy on your signal. // EOF
+                                {">> "}
+                                <ScrambleEffect
+                                    text="DECRYPTED: While waiting for my next mission, I started vibecoding. [SUCCESS] One Friday night later, this dashboard went live. Ready to deploy on your signal. // EOF"
+                                    duration={2000}
+                                    className="font-mono lowercase italic tracking-normal normal-case"
+                                />
                             </p>
                             <div className="mt-4 flex items-center justify-between text-[7px] font-mono uppercase tracking-[0.2em] text-retro-pink/30">
                                 <span>Auth_Sequence: v-engineer-01 // Verified</span>
@@ -103,7 +109,8 @@ export const SummarySection = ({ summary, hudData }: SummarySectionProps) => {
                 <TypingEffect
                     text={summary}
                     speed={1}
-                    glitchChance={0.4}
+                    glitchChance={0.15}
+                    glitchIntensity={0.2}
                     rules={[
                         { pattern: /\b(Java|Spring|Spring Boot|Oracle|SQL)\b/g, className: 'text-retro-cyan font-bold' },
                         { pattern: /\b(API|microservices|back-end|backend|Hibernate|Kafka)\b/g, className: 'text-retro-pink font-bold' }

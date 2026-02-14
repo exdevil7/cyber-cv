@@ -1,15 +1,15 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { cvData } from './data/cvData';
-import { HeroSection } from './components/HeroSection';
-import { ContactHub } from './components/ContactHub';
-import { SkillsGrid } from './components/SkillsGrid';
-import { MissionLog } from './components/MissionLog';
-import { Academy } from './components/Academy';
-import { Certifications } from './components/Certifications';
-import { Footer } from './components/Footer';
-import { SummarySection } from './components/SummarySection';
-import { Header } from './components/Header';
+import { HeroSection } from './sections/HeroSection';
+import { ContactHub } from './sections/ContactHub';
+import { SkillsGrid } from './sections/SkillsGrid';
+import { MissionLog } from './sections/MissionLog';
+import { Academy } from './sections/Academy';
+import { Certifications } from './sections/Certifications';
+import { Footer } from './layout/Footer';
+import { SummarySection } from './sections/SummarySection';
+import { Header } from './layout/Header';
 
 function App() {
   const [showContent, setShowContent] = useState(false);

@@ -1,7 +1,8 @@
 import { useState, useCallback } from 'react';
 import { motion } from 'framer-motion';
-import { TypingEffect } from './TypingEffect';
-import { LoadingBar } from './LoadingBar';
+import { TypingEffect } from '../components/TypingEffect';
+import { LoadingBar } from '../components/LoadingBar';
+import { ScrambleEffect } from '../components/ScrambleEffect';
 
 interface HeroSectionProps {
     name: string;
@@ -47,7 +48,11 @@ export const HeroSection = ({ name, role, onContentReady }: HeroSectionProps) =>
                         animate={{ opacity: 1, x: 0 }}
                         className="text-xl md:text-2xl font-black font-orbitron text-retro-pink mb-12 uppercase italic tracking-widest flex items-center justify-center md:justify-start"
                     >
-                        <TypingEffect text={`// ${role}`} speed={40} glitchChance={0.7} />
+                        <ScrambleEffect
+                            text={`// ${role}`}
+                            duration={800}
+                            className="font-orbitron tracking-widest uppercase italic"
+                        />
                     </motion.div>
                 )}
 
