@@ -2,12 +2,18 @@ import { Terminal, MessageSquare } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { TypingEffect } from './TypingEffect';
 import { useState } from 'react';
+import { cn } from '../utils/utils';
 
 interface SummarySectionProps {
     summary: string;
+    hudData: {
+        expLevel: string;
+        engine: string;
+        status: string;
+    };
 }
 
-export const SummarySection = ({ summary }: SummarySectionProps) => {
+export const SummarySection = ({ summary, hudData }: SummarySectionProps) => {
     const [isMessageOpen, setIsMessageOpen] = useState(false);
 
     return (
@@ -18,30 +24,36 @@ export const SummarySection = ({ summary }: SummarySectionProps) => {
 
                 <div className="px-3 border-l-4 border-retro-cyan flex flex-col whitespace-nowrap relative z-10">
                     <span className="text-[8px] font-black font-orbitron text-retro-cyan/40 uppercase tracking-[0.2em]">Exp_Level</span>
-                    <span className="text-xs lg:text-sm font-bold font-mono text-retro-cyan">06_Y+</span>
+                    <span className="text-xs lg:text-sm font-bold font-mono text-retro-cyan">{hudData.expLevel}</span>
                 </div>
 
                 <div className="px-3 border-l-4 border-retro-purple flex flex-col whitespace-nowrap relative z-10">
                     <span className="text-[8px] font-black font-orbitron text-retro-purple/40 uppercase tracking-[0.2em]">Engine</span>
-                    <span className="text-xs lg:text-sm font-bold font-mono text-retro-purple">JAVA_SPRING</span>
+                    <span className="text-xs lg:text-sm font-bold font-mono text-retro-purple">{hudData.engine}</span>
                 </div>
 
                 <div className="px-3 border-l-4 border-retro-pink flex flex-col whitespace-nowrap relative z-10">
                     <span className="text-[8px] font-black font-orbitron text-retro-pink/40 uppercase tracking-[0.2em]">Status</span>
-                    <span className="text-xs lg:text-sm font-bold font-mono text-retro-pink italic uppercase tracking-tighter">OPEN_TO_WORK</span>
+                    <span className="text-xs lg:text-sm font-bold font-mono text-retro-pink italic uppercase tracking-tighter">{hudData.status}</span>
                 </div>
 
                 {/* Message HUD Segment */}
                 <div className="px-3 border-l-4 border-retro-pink flex flex-col whitespace-nowrap relative z-10 group/msg cursor-pointer" onClick={() => setIsMessageOpen(!isMessageOpen)}>
                     <div className="flex items-center gap-2">
-                        <span className={`text-[8px] font-black font-orbitron uppercase tracking-[0.2em] transition-colors ${isMessageOpen ? 'text-retro-pink' : 'text-retro-pink/40 group-hover/msg:text-retro-pink/80'}`}>Message</span>
+                        <span className={cn(
+                            "text-[8px] font-black font-orbitron uppercase tracking-[0.2em] transition-colors",
+                            isMessageOpen ? "text-retro-pink" : "text-retro-pink/40 group-hover/msg:text-retro-pink/80"
+                        )}>Message</span>
                         {!isMessageOpen && (
                             <span className="w-1.5 h-1.5 bg-retro-pink rounded-full animate-pulse"></span>
                         )}
                     </div>
                     <div className="flex items-center gap-2">
-                        <MessageSquare size={12} className={isMessageOpen ? 'text-retro-pink' : 'text-retro-pink/60 group-hover/msg:text-retro-pink'} />
-                        <span className={`text-xs lg:text-sm font-bold font-mono transition-colors ${isMessageOpen ? 'text-retro-pink' : 'text-white/60 group-hover/msg:text-white'}`}>
+                        <MessageSquare size={12} className={cn(isMessageOpen ? "text-retro-pink" : "text-retro-pink/60 group-hover/msg:text-retro-pink")} />
+                        <span className={cn(
+                            "text-xs lg:text-sm font-bold font-mono transition-colors",
+                            isMessageOpen ? "text-retro-pink" : "text-white/60 group-hover/msg:text-white"
+                        )}>
                             {isMessageOpen ? 'DECRYPTING...' : '1_NEW_INTEL'}
                         </span>
                     </div>

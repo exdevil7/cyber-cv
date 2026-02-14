@@ -1,4 +1,5 @@
 import { type LucideIcon } from 'lucide-react';
+import { cn } from '../utils/utils';
 
 interface SectionProps {
     title: string;
@@ -9,7 +10,7 @@ interface SectionProps {
 }
 
 export const Section = ({ title, icon: Icon, children, className, id }: SectionProps) => (
-    <section id={id} className={`mb-20 scroll-mt-24 ${className || ''}`}>
+    <section id={id} className={cn("mb-20 scroll-mt-24", className)}>
         <div className="flex items-center gap-4 mb-10 group">
             <div className="p-3 bg-retro-purple/20 text-retro-cyan border border-retro-purple/40 shadow-[0_0_15px_rgba(0,255,255,0.2)]">
                 <Icon size={24} className="group-hover:animate-pulse" />
