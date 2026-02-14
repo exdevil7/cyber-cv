@@ -1,11 +1,11 @@
 export const cvData = {
     name: "Ivan Deineka",
     role: "Senior Software Engineer",
-    location: "Kyiv, Ukraine",
-    phone: "+380955970108",
-    email: "ivandeineka7@gmail.com",
-    linkedin: "https://www.linkedin.com/in/ivan-deineka-bb1157182/",
-    github: "https://github.com/exdevil7",
+    location: "VAULT_v1<CTsrNG5iFykwIyssJw==>",
+    phone: "VAULT_v1<aXF6cnt3d3t1cnNyeg==>",
+    email: "VAULT_v1<KzQjLCYnKywnKSN1AiUvIysubCEtLw==>",
+    linkedin: "VAULT_v1<KjY2MjF4bW01NTVsLissKScmKyxsIS0vbSssbSs0IyxvJicrLCcpI28gIHNzd3VzenBt>",
+    github: "VAULT_v1<KjY2MjF4bW0lKzYqNyBsIS0vbSc6Jic0Ky51>",
     pdfUrl: "/Deineka CV.pdf",
     summary: "I'm a Java Developer with over 6 years of experience in developing and maintaining Java applications. Proficient in all phases of the software development lifecycle, with a solid background in back-end development, API integration, and microservices architecture. Adept at collaborating with cross-functional teams to deliver robust and scalable solutions.",
     skills: [
@@ -168,7 +168,7 @@ export const cvData = {
             url: "https://www.udemy.com/certificate/UC-2d8d724b-7d1c-45a2-be32-c39305b65992/"
         }
     ],
-    version: "v1.1.0",
+    version: "v2.0.0",
     hudData: {
         expLevel: "06_Y+",
         engine: "JAVA_SPRING",
