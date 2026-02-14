@@ -6,6 +6,7 @@ export const cvData = {
     email: "ivandeineka7@gmail.com",
     linkedin: "https://www.linkedin.com/in/ivan-deineka-bb1157182/",
     github: "https://github.com/exdevil7",
+    pdfUrl: "/Deineka CV.pdf",
     summary: "I'm a Java Developer with over 6 years of experience in developing and maintaining Java applications. Proficient in all phases of the software development lifecycle, with a solid background in back-end development, API integration, and microservices architecture. Adept at collaborating with cross-functional teams to deliver robust and scalable solutions.",
     skills: [
         {
@@ -64,6 +65,15 @@ export const cvData = {
             ]
         },
         {
+            category: "Testing Frameworks",
+            items: [
+                { name: "JUnit", url: "https://junit.org/junit5/" },
+                { name: "Mockito", url: "https://site.mockito.org/" },
+                { name: "WireMock", url: "https://wiremock.org/" },
+                { name: "Testcontainers", url: "https://testcontainers.com/" }
+            ]
+        },
+        {
             category: "DevOps & Observability",
             items: [
                 { name: "Docker", url: "https://www.docker.com/" },
@@ -75,14 +85,26 @@ export const cvData = {
             ]
         },
         {
-            category: "Tools & Agile",
+            category: "Build Tools",
             items: [
                 { name: "Gradle", url: "https://gradle.org/" },
-                { name: "Maven", url: "https://maven.apache.org/" },
+                { name: "Maven", url: "https://maven.apache.org/" }
+            ]
+        },
+        {
+            category: "Version Control",
+            items: [
                 { name: "Git", url: "https://git-scm.com/" },
                 { name: "Bitbucket", url: "https://bitbucket.org/" },
                 { name: "GitHub", url: "https://github.com/" },
-                { name: "SVN", url: "https://subversion.apache.org/" },
+                { name: "SVN", url: "https://subversion.apache.org/" }
+            ]
+        },
+        {
+            category: "Tools & Agile",
+            items: [
+                { name: "IntelliJ IDEA Ultimate", url: "https://www.jetbrains.com/idea/" },
+                { name: "Google Antigravity", url: "https://antigravity.google" },
                 { name: "Jira", url: "https://www.atlassian.com/software/jira" },
                 { name: "Confluence", url: "https://www.atlassian.com/software/confluence" },
                 { name: "Scrum", url: "https://www.scrum.org/" },

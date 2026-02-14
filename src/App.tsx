@@ -27,6 +27,7 @@ function App() {
         <HeroSection
           name={cvData.name}
           role={cvData.role}
+          pdfUrl={cvData.pdfUrl}
           onContentReady={() => setShowContent(true)}
         />
 
