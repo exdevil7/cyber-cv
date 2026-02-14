@@ -1,0 +1,177 @@
+@import "tailwindcss";
+
+@theme {
+  --color-retro-black: #050505;
+  --color-retro-purple: #9d00ff;
+  --color-retro-pink: #ff00ff;
+  --color-retro-cyan: #00ffff;
+  --font-orbitron: "Orbitron", sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-retro-black overflow-x-hidden p-0 m-0;
+  }
+}
+
+@layer utilities {
+  .neon-text-pink {
+    text-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff, 0 0 20px #ff00ff;
+  }
+
+  .neon-text-cyan {
+    text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff, 0 0 20px #00ffff;
+  }
+
+  .neon-border-cyan {
+    box-shadow: 0 0 5px #00ffff, inset 0 0 5px #00ffff;
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-retro-cyan via-retro-pink to-retro-purple;
+  }
+
+  /* Scanlines overlay */
+  .scanlines {
+    @apply pointer-events-none fixed inset-0 z-[100];
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%,
+        rgba(0, 0, 0, 0.1) 50%),
+      linear-gradient(90deg,
+        rgba(255, 0, 0, 0.03),
+        rgba(0, 255, 0, 0.01),
+        rgba(0, 0, 255, 0.03));
+    background-size: 100% 4px, 3px 100%;
+  }
+
+  /* Retro Grid */
+  .retro-grid {
+    @apply pointer-events-none fixed inset-0 z-0 opacity-20;
+    background-image: linear-gradient(to right, #9d00ff 1px, transparent 1px),
+      linear-gradient(to bottom, #9d00ff 1px, transparent 1px);
+    background-size: 50px 50px;
+    mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+    perspective: 1000px;
+    transform: rotateX(60deg) translateY(-20%);
+  }
+
+  /* Retro Sun */
+  .retro-sun {
+    @apply fixed left-1/2 -translate-x-1/2 bottom-[-100px] w-[800px] h-[400px] rounded-t-[400px] z-[-1] opacity-30;
+    background: linear-gradient(to bottom, #ff00ff, #9d00ff88);
+    box-shadow: 0 0 100px #ff00ff;
+    mask-image: repeating-linear-gradient(to bottom,
+        black,
+        black 20px,
+        transparent 20px,
+        transparent 40px);
+  }
+
+  .card {
+    @apply p-8 bg-retro-purple/5 border border-retro-purple/20 transition-all duration-300 backdrop-blur-sm relative overflow-hidden;
+    background-image: radial-gradient(circle at 0% 0%, rgba(157, 0, 255, 0.05) 0%, transparent 50%);
+  }
+
+  .card:hover {
+    @apply border-retro-pink/40 bg-retro-purple/10 -translate-y-1;
+    box-shadow: 0 0 30px rgba(157, 0, 255, 0.1);
+  }
+
+  .card::after {
+    content: "";
+    @apply absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-retro-cyan/30 to-transparent;
+  }
+}
+
+/* Animations */
+@keyframes glitch {
+  0% {
+    transform: translate(0);
+  }
+
+  20% {
+    transform: translate(-2px, 2px);
+  }
+
+  40% {
+    transform: translate(-2px, -2px);
+  }
+
+  60% {
+    transform: translate(2px, 2px);
+  }
+
+  80% {
+    transform: translate(2px, -2px);
+  }
+
+  100% {
+    transform: translate(0);
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes success-glow {
+  0% {
+    box-shadow: 0 0 0px transparent;
+  }
+
+  50% {
+    box-shadow: 0 0 30px #00ffff;
+  }
+
+  100% {
+    box-shadow: 0 0 15px rgba(157, 0, 255, 0.1);
+  }
+}
+
+@keyframes heartbeat {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+
+  15% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-success-glow {
+  animation: success-glow 2s ease-out forwards;
+}
+
+.animate-heartbeat {
+  animation: heartbeat 2s ease-in-out infinite;
+}
+
+.shimmer {
+  animation: shimmer 2s linear infinite;
+}
