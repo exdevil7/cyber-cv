@@ -168,7 +168,7 @@ export const cvData = {
             url: "https://www.udemy.com/certificate/UC-2d8d724b-7d1c-45a2-be32-c39305b65992/"
         }
     ],
-    version: "v2.0.0",
+    version: "v2.0.1",
     hudData: {
         expLevel: "06_Y+",
         engine: "JAVA_SPRING",
