@@ -144,8 +144,7 @@ export const cvData = {
     },
     languages: [
         { name: "English", level: "Upper-Intermediate" },
-        { name: "Ukrainian", level: "Native" },
-        { name: "Russian", level: "Native" }
+        { name: "Ukrainian", level: "Native" }
     ],
     certifications: [
         {
