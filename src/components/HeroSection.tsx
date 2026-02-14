@@ -45,10 +45,9 @@ export const HeroSection = ({ name, role, onContentReady }: HeroSectionProps) =>
                     <motion.div
                         initial={{ opacity: 0, x: -10 }}
                         animate={{ opacity: 1, x: 0 }}
-                        className="text-xl md:text-2xl font-black font-orbitron text-retro-pink mb-12 uppercase italic tracking-widest flex items-center gap-4"
+                        className="text-xl md:text-2xl font-black font-orbitron text-retro-pink mb-12 uppercase italic tracking-widest flex items-center justify-center md:justify-start"
                     >
-                        <div className="w-8 h-[2px] bg-retro-pink"></div>
-                        <TypingEffect text={role} speed={40} glitchChance={0.7} />
+                        <TypingEffect text={`// ${role}`} speed={40} glitchChance={0.7} />
                     </motion.div>
                 )}
 
