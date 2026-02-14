@@ -5,6 +5,7 @@
   --color-retro-purple: #9d00ff;
   --color-retro-pink: #ff00ff;
   --color-retro-cyan: #00ffff;
+  --color-retro-yellow: #ffff00;
   --font-orbitron: "Orbitron", sans-serif;
 }
 
@@ -79,6 +80,18 @@
   .card::after {
     content: "";
     @apply absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-retro-cyan/30 to-transparent;
+  }
+
+  .terminal-glow {
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.1);
+  }
+
+  .terminal-glow-purple {
+    box-shadow: 0 0 15px rgba(157, 0, 255, 0.1);
+  }
+
+  .terminal-glow-yellow {
+    box-shadow: 0 0 15px rgba(255, 255, 0, 0.1);
   }
 }
 

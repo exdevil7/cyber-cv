@@ -39,21 +39,21 @@ export const SummarySection = ({ summary, hudData }: SummarySectionProps) => {
                 </div>
 
                 {/* Message HUD Segment */}
-                <div className="px-3 border-l-4 border-retro-pink flex flex-col whitespace-nowrap relative z-10 group/msg cursor-pointer" onClick={() => setIsMessageOpen(!isMessageOpen)}>
+                <div className="px-3 border-l-4 border-retro-yellow flex flex-col whitespace-nowrap relative z-10 group/msg cursor-pointer" onClick={() => setIsMessageOpen(!isMessageOpen)}>
                     <div className="flex items-center gap-2">
                         <span className={cn(
                             "text-[8px] font-black font-orbitron uppercase tracking-[0.2em] transition-colors",
-                            isMessageOpen ? "text-retro-pink" : "text-retro-pink/40 group-hover/msg:text-retro-pink/80"
+                            isMessageOpen ? "text-retro-yellow" : "text-retro-yellow/40 group-hover/msg:text-retro-yellow/80"
                         )}>Message</span>
                         {!isMessageOpen && (
-                            <span className="w-1.5 h-1.5 bg-retro-pink rounded-full animate-pulse"></span>
+                            <span className="w-1.5 h-1.5 bg-retro-yellow rounded-full animate-pulse"></span>
                         )}
                     </div>
                     <div className="flex items-center gap-2">
-                        <MessageSquare size={12} className={cn(isMessageOpen ? "text-retro-pink" : "text-retro-pink/60 group-hover/msg:text-retro-pink")} />
+                        <MessageSquare size={12} className={cn(isMessageOpen ? "text-retro-yellow" : "text-retro-yellow/60 group-hover/msg:text-retro-yellow")} />
                         <span className={cn(
                             "text-xs lg:text-sm font-bold font-mono transition-colors",
-                            isMessageOpen ? "text-retro-pink" : "text-white/60 group-hover/msg:text-white"
+                            isMessageOpen ? "text-retro-yellow" : "text-white/60 group-hover/msg:text-white"
                         )}>
                             {isMessageOpen ? 'DECRYPTING...' : '1_NEW_INTEL'}
                         </span>
@@ -69,21 +69,21 @@ export const SummarySection = ({ summary, hudData }: SummarySectionProps) => {
                         exit={{ height: 0, opacity: 0 }}
                         className="overflow-hidden mb-6"
                     >
-                        <div className="p-4 bg-retro-pink/5 border-l-4 border-retro-pink/40 relative group/drawer terminal-glow-purple">
-                            <div className="absolute inset-0 bg-retro-purple/5 crt-flicker pointer-events-none"></div>
+                        <div className="p-4 bg-retro-yellow/5 border-l-4 border-retro-yellow/40 relative group/drawer terminal-glow-yellow">
+                            <div className="absolute inset-0 bg-retro-yellow/5 crt-flicker pointer-events-none"></div>
                             <div className="flex items-center justify-between mb-3">
                                 <div className="flex items-center gap-2">
-                                    <Terminal size={12} className="text-retro-pink" />
-                                    <span className="text-[8px] font-black font-orbitron text-retro-pink tracking-widest uppercase">Decrypted_Intel: File_01</span>
+                                    <Terminal size={12} className="text-retro-yellow" />
+                                    <span className="text-[8px] font-black font-orbitron text-retro-yellow tracking-widest uppercase">Decrypted_Intel: File_01</span>
                                 </div>
                                 <button
                                     onClick={() => setIsMessageOpen(false)}
-                                    className="text-[10px] uppercase font-orbitron text-retro-pink/40 hover:text-retro-pink transition-colors"
+                                    className="text-[10px] uppercase font-orbitron text-retro-yellow/40 hover:text-retro-yellow transition-colors"
                                 >
                                     [Close_Session]
                                 </button>
                             </div>
-                            <p className="text-sm font-bold font-mono text-white/90 italic leading-relaxed pl-4 border-l border-retro-pink/20">
+                            <p className="text-sm font-bold font-mono text-white/90 italic leading-relaxed pl-4 border-l border-retro-yellow/20">
                                 {">> "}
                                 <ScrambleEffect
                                     text="DECRYPTED: While waiting for my next mission, I started vibecoding. [SUCCESS] One Friday night later, this dashboard went live. Ready to deploy on your signal. // EOF"
@@ -91,11 +91,11 @@ export const SummarySection = ({ summary, hudData }: SummarySectionProps) => {
                                     className="font-mono lowercase italic tracking-normal normal-case"
                                 />
                             </p>
-                            <div className="mt-4 flex items-center justify-between text-[7px] font-mono uppercase tracking-[0.2em] text-retro-pink/30">
+                            <div className="mt-4 flex items-center justify-between text-[7px] font-mono uppercase tracking-[0.2em] text-retro-yellow/30">
                                 <span>Auth_Sequence: v-engineer-01 // Verified</span>
                                 <div className="flex gap-1">
                                     {[1, 2, 3].map(i => (
-                                        <div key={i} className="w-1 h-1 bg-retro-pink/20 rounded-full animate-pulse" style={{ animationDelay: `${i * 200}ms` }}></div>
+                                        <div key={i} className="w-1 h-1 bg-retro-yellow/20 rounded-full animate-pulse" style={{ animationDelay: `${i * 200}ms` }}></div>
                                     ))}
                                 </div>
                             </div>
