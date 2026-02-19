@@ -166,7 +166,11 @@ export const cvData = {
         {
             name: "Ultimate AWS Certified Cloud Practitioner CLF-C02 (Udemy)",
             url: "https://www.udemy.com/certificate/UC-2d8d724b-7d1c-45a2-be32-c39305b65992/"
-        }
+        },
+        {
+            name: "Spring Security Zero to Master along with JWT,OAUTH2 (Udemy)",
+            url: "https://www.udemy.com/certificate/UC-6bd17939-ff7e-432a-ae66-6009278f46ec/"
+        },
     ],
     version: "v2.0.1",
     hudData: {
