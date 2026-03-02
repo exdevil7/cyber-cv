@@ -1,10 +1,6 @@
-import React, { useState, useEffect, useRef, useMemo } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
 import { cn } from '../utils/utils';
 
-interface HighlightRule {
-    pattern: RegExp;
-    className: string;
-}
 
 interface TypingEffectProps {
     text: string;
@@ -15,7 +11,6 @@ interface TypingEffectProps {
     highlightStart?: number;
     highlightEnd?: number;
     highlightClassName?: string;
-    rules?: HighlightRule[];
     onComplete?: () => void;
 }
 
@@ -44,7 +39,6 @@ export const TypingEffect = ({
     highlightStart,
     highlightEnd,
     highlightClassName = '',
-    rules = [],
     onComplete
 }: TypingEffectProps) => {
     const [displayText, setDisplayText] = useState('');
@@ -112,60 +106,19 @@ export const TypingEffect = ({
         }
     }, [isCycling, cycleCount, maxCycles, currentIndex, text]);
 
-    const renderText = (content: string) => {
-        if (rules.length === 0 && (highlightStart === undefined || highlightEnd === undefined)) {
-            return content;
-        }
-
-        if (rules.length === 0) {
-            const before = content.slice(0, highlightStart);
-            const mid = content.slice(highlightStart, highlightEnd);
-            const after = content.slice(highlightEnd);
-            return (
-                <>
-                    {before}<span className={highlightClassName}>{mid}</span>{after}
-                </>
-            );
-        }
-
-        const result: (string | React.ReactNode)[] = [];
-        let lastIndex = 0;
-        const combinedRegex = new RegExp(rules.map(r => `(?:${r.pattern.source})`).join('|'), 'g');
-
-        let match;
-        while ((match = combinedRegex.exec(content)) !== null) {
-            if (match.index > lastIndex) {
-                result.push(content.slice(lastIndex, match.index));
-            }
-
-            const matchedText = match[0];
-            const rule = rules.find(r => {
-                const re = new RegExp(r.pattern.source, r.pattern.flags.replace('g', ''));
-                return re.test(matchedText);
-            });
-
-            if (rule) {
-                result.push(<span key={match.index} className={rule.className}>{matchedText}</span>);
-            } else {
-                result.push(matchedText);
-            }
-
-            lastIndex = combinedRegex.lastIndex;
-            if (match[0].length === 0) combinedRegex.lastIndex++;
-        }
-
-        if (lastIndex < content.length) {
-            result.push(content.slice(lastIndex));
-        }
-
-        return <>{result}</>;
-    };
-
     const isFinished = currentIndex === text.length && !isCycling;
 
     return (
         <span className={cn(className, "inline-block")}>
-            {renderText(displayText)}
+            {highlightStart !== undefined && highlightEnd !== undefined ? (
+                <>
+                    {displayText.slice(0, highlightStart)}
+                    <span className={highlightClassName}>{displayText.slice(highlightStart, highlightEnd)}</span>
+                    {displayText.slice(highlightEnd)}
+                </>
+            ) : (
+                displayText
+            )}
             {isCycling && (
                 <ChromaticText char={currentGlitchChar} color={glitchColor} />
             )}
