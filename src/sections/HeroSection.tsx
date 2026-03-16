@@ -68,11 +68,22 @@ export const HeroSection = ({ name, role, onContentReady, pdfUrl }: HeroSectionP
                         <a
                             href={pdfUrl}
                             download="Ivan_Deineka_CV.pdf"
-                            className="group flex items-center gap-3 px-6 py-3 bg-retro-purple/10 border border-retro-purple/30 text-retro-cyan hover:border-retro-cyan hover:bg-retro-cyan/10 transition-all duration-300 font-orbitron uppercase text-sm tracking-widest relative overflow-hidden"
+                            className="group flex items-center gap-3 px-6 py-3 bg-retro-cyan/10 border border-retro-cyan transition-all duration-300 font-orbitron uppercase text-sm tracking-widest relative overflow-hidden"
                         >
-                            <FileText size={18} className="group-hover:animate-pulse" />
-                            <span>Boring Version (PDF)</span>
-                            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-retro-cyan/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+                            <motion.div
+                                className="absolute inset-0 bg-gradient-to-r from-transparent via-retro-cyan/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                                animate={{
+                                    x: ['-100%', '200%'],
+                                }}
+                                transition={{
+                                    duration: 3,
+                                    repeat: Infinity,
+                                    ease: "linear",
+                                }}
+                            />
+                            <FileText size={18} className="text-retro-cyan animate-pulse relative z-10" />
+                            <span className="text-white relative z-10 transition-colors duration-300 drop-shadow-[0_0_8px_rgba(0,255,255,0.8)] font-bold">Boring Version (PDF)</span>
+                            <div className="absolute inset-x-0 bottom-0 h-[2px] bg-retro-cyan scale-x-100 transition-transform duration-300 origin-left shadow-[0_0_10px_rgba(0,255,255,0.8)]"></div>
                         </a>
                     </motion.div>
                 )}
