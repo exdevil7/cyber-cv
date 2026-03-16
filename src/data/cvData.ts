@@ -118,21 +118,33 @@ export const cvData = {
             company: "SYTOSS",
             companyUrl: "https://www.sytoss.com/",
             period: "Apr 2019 - Jan 2026",
+            domain: "Telecom",
             technologies: ["Java", "Spring Boot", "Hibernate", "PL/SQL", "OpenShift", "Jenkins"],
             responsibilities: [
-                "Maintained and enhanced enterprise-level Java applications using Spring Boot and Hibernate.",
+                "Maintained and enhanced enterprise-level Spring Boot applications.",
                 "Designed and implemented RESTful APIs to facilitate seamless communication between front-end and back-end systems.",
-                "Utilized JPA for database interactions and managed Oracle databases.",
                 "Integrated RESTful APIs with front-end components, ensuring smooth data flow and user interactions.",
                 "Configured and customised AmdocsCRM modules for telecom clients, improving customer data management.",
                 "Collaborated with QA and business teams to fix issues, improve system performance, and ensure data accuracy.",
-                "Participated in Agile ceremonies and contributed to sprint planning, estimation, and retrospectives.",
-                "Led a team of junior developers, providing mentorship and technical guidance."
+                "Participated in Agile ceremonies and contributed to sprint planning, estimation, and retrospectives."
             ],
             achievements: [
-                "Played a key role in developing and integrating microservices during the migration from a monolithic system to a distributed architecture on OpenShift, improving scalability and maintainability.",
-                "Improved automation and system reliability by integrating backend services and workflows for full order lifecycle management and security.",
-                "Independently owned and resolved hundreds of customer issues, collaborating with support, QA, and product teams to deliver permanent fixes."
+                {
+                    lvl1: "Played a key role in developing and integrating microservices during the migration from a monolithic system to a distributed architecture on OpenShift. Designed, refactored and successfully released to production **several key systems**:",
+                    lvl2: [
+                        "**Centralized configuration service** to eliminate tight coupling between microservices, enabling **dynamic configuration management** and independent service deployments, environment-specific settings, **runtime updates** without redeploys, and consistent configuration across all services, improving system reliability and operational efficiency.",
+                        "**Distributed asynchronous integration layer** for multi-step third-party workflows, applying **idempotency and compensating events** to ensure safe retries and consistent recovery from partial failures;",
+                        "**Database migration service** using **Liquibase** to automate schema evolution and data updates, reducing manual migration errors and improving **deployment reliability**;",
+                        "**Suite of tools** to streamline E2E and integration test creation, supporting automated generation of complex test data and reusable mocks."
+                    ]
+                },
+                {
+                    lvl1: "Onboarding and mentoring:",
+                    lvl2: [
+                        "Managed the **onboarding process** for 10+ team members, mentoring and guiding them through systems, workflows, and best practices, enabling faster contribution to active projects;",
+                        "Led a team of junior developers, providing **mentorship, technical guidance, coordinating development processes**, and conducting numerous **code reviews** to ensure high code quality and timely delivery."
+                    ]
+                }
             ]
         }
     ],
@@ -172,7 +184,7 @@ export const cvData = {
             url: "https://www.udemy.com/certificate/UC-6bd17939-ff7e-432a-ae66-6009278f46ec/"
         },
     ],
-    version: "v2.0.1",
+    version: "v1.2.0",
     hudData: {
         expLevel: "06_Y+",
         engine: "JAVA_SPRING",
