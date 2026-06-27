@@ -22,7 +22,7 @@ export const HeroSection = ({ name, role, pdfUrl }: HeroSectionProps) => {
                     {name}
                 </h1>
 
-                <div className="text-xs md:text-sm font-semibold text-slate-700 mb-10 uppercase tracking-[0.3em] flex items-center justify-center md:justify-start font-mono">
+                <div className="text-xs md:text-sm font-semibold text-slate-500 mb-10 uppercase tracking-[0.3em] flex items-center justify-center md:justify-start font-mono">
                     {role}
                 </div>
 

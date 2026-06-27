@@ -1,9 +1,26 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Moon, Sun } from 'lucide-react';
 
 export const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isDarkMode, setIsDarkMode] = useState(() => {
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            return savedTheme === 'dark';
+        }
+        return false; // Default to light mode
+    });
+
+    useEffect(() => {
+        if (isDarkMode) {
+            document.documentElement.classList.add('dark');
+            localStorage.setItem('theme', 'dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+            localStorage.setItem('theme', 'light');
+        }
+    }, [isDarkMode]);
 
     const navLinks = [
         { name: 'About', href: '#about' },
@@ -37,15 +54,31 @@ export const Header = () => {
                             {link.name}
                         </a>
                     ))}
+                    <button 
+                        onClick={() => setIsDarkMode(!isDarkMode)}
+                        className="text-slate-500 hover:text-dusty-blue transition-colors ml-4"
+                        aria-label="Toggle Dark Mode"
+                    >
+                        {isDarkMode ? <Sun size={16} /> : <Moon size={16} />}
+                    </button>
                 </nav>
 
-                {/* Mobile Menu Button */}
-                <button
-                    className="md:hidden text-slate-500 hover:text-dusty-blue transition-colors"
-                    onClick={() => setIsMenuOpen(!isMenuOpen)}
-                >
-                    {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
-                </button>
+                {/* Mobile Menu & Theme Buttons */}
+                <div className="md:hidden flex items-center gap-4">
+                    <button 
+                        onClick={() => setIsDarkMode(!isDarkMode)}
+                        className="text-slate-500 hover:text-dusty-blue transition-colors"
+                        aria-label="Toggle Dark Mode"
+                    >
+                        {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
+                    </button>
+                    <button
+                        className="text-slate-500 hover:text-dusty-blue transition-colors"
+                        onClick={() => setIsMenuOpen(!isMenuOpen)}
+                    >
+                        {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
+                    </button>
+                </div>
             </div>
 
             {/* Mobile Navigation Overlay */}
