@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback } from 'react';
 import { MapPin, Phone, Mail, Linkedin, Github, Lock } from 'lucide-react';
 import { ContactCard } from '../components/ContactCard';
 import { motion } from 'framer-motion';
