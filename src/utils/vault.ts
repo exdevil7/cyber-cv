@@ -34,7 +34,7 @@ export const vault = {
             return decoded.split('')
                 .map(char => String.fromCharCode(char.charCodeAt(0) ^ VAULT_KEY))
                 .join('');
-        } catch (e) {
+        } catch {
             console.error('Failed to decrypt vault data');
             return '[DATA_CORRUPTED]';
         }

@@ -1,9 +1,9 @@
 import { useState, useCallback, useEffect } from 'react';
 import { MapPin, Phone, Mail, Linkedin, Github, Lock } from 'lucide-react';
-import { ScrambleEffect } from '../components/ScrambleEffect';
 import { ContactCard } from '../components/ContactCard';
+import { motion } from 'framer-motion';
 import { vault } from '../utils/vault';
-import { cn } from '../utils/utils';
+
 
 interface ContactHubProps {
     data: {
@@ -25,23 +25,7 @@ export const ContactHub = ({ data }: ContactHubProps) => {
         github: false
     });
 
-    useEffect(() => {
-        const scheduleReveal = (key: keyof typeof revealState, delay: number) => {
-            return setTimeout(() => {
-                setRevealState(prev => ({ ...prev, [key]: true }));
-            }, delay);
-        };
 
-        const timers = [
-            scheduleReveal('location', 1000),
-            scheduleReveal('phone', 1600),
-            scheduleReveal('email', 2200),
-            scheduleReveal('linkedin', 2800),
-            scheduleReveal('github', 3400)
-        ];
-
-        return () => timers.forEach(timer => clearTimeout(timer));
-    }, []);
 
     const bruteForceReveal = (key: keyof typeof revealState) => {
         if (!revealState[key]) {
@@ -58,7 +42,6 @@ export const ContactHub = ({ data }: ContactHubProps) => {
         github: vault.decode(data.github),
     };
 
-
     const handleCopy = useCallback((text: string, type: string) => {
         navigator.clipboard.writeText(text);
         setCopiedStates((prev) => ({ ...prev, [type]: true }));
@@ -69,30 +52,28 @@ export const ContactHub = ({ data }: ContactHubProps) => {
 
     return (
         <div className="lg:w-2/5 w-full flex-shrink-0 flex flex-col gap-4">
-            {/* Premium Location Card (Non-interactive) */}
+            {/* Location Card */}
             <div
-                className="relative group border px-4 py-3 transition-all duration-500 overflow-hidden border-retro-purple/20 bg-retro-purple/5 hover:border-retro-purple/40"
+                className="relative group border px-4 py-3 transition-all duration-300 overflow-hidden border-slate-200/60 bg-soft-surface/65 backdrop-blur-xl rounded-xl hover:border-slate-300/60 shadow-sm"
                 onMouseEnter={() => bruteForceReveal('location')}
             >
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-retro-purple/5 to-transparent -translate-x-full group-hover:animate-[shimmer_2s_infinite]"></div>
                 <div className="grid grid-cols-[3rem_1fr] items-center gap-2 relative z-10 w-full">
-                    <div className="w-10 h-10 flex items-center justify-center text-retro-cyan flex-shrink-0 bg-retro-purple/10 rounded-sm">
-                        {revealState.location ? <MapPin size={18} /> : <Lock size={18} className="text-retro-purple/40" />}
+                    <div className="w-10 h-10 flex items-center justify-center text-dusty-blue flex-shrink-0 bg-dusty-blue/10 rounded-lg">
+                        {revealState.location ? <MapPin size={18} /> : <Lock size={18} className="text-slate-500" />}
                     </div>
                     <div className="flex flex-col">
-                        <span className="text-[8px] font-black font-orbitron tracking-[0.2em] text-retro-purple/60 uppercase flex items-center gap-2">
-                            {revealState.location ? 'Current_Sector' : 'SECTOR_ENCRYPTED'}
-                            <span className="flex gap-[2px]">
-                                <span className={cn("w-[2px] h-2 bg-retro-purple animate-heartbeat", !revealState.location && "bg-retro-purple/20")}></span>
-                                <span className={cn("w-[2px] h-2 bg-retro-purple animate-heartbeat [animation-delay:0.2s]", !revealState.location && "bg-retro-purple/20")}></span>
-                                <span className={cn("w-[2px] h-2 bg-retro-purple animate-heartbeat [animation-delay:0.4s]", !revealState.location && "bg-retro-purple/20")}></span>
-                            </span>
+                        <span className="text-[10px] font-bold tracking-wider text-slate-500 uppercase flex items-center gap-2">
+                            Location
                         </span>
-                        <ScrambleEffect
-                            text={revealState.location ? decrypted.location : "DATA_LOCKED_BY_CYBER_VAULT"}
-                            className="text-xs font-bold font-mono text-white tracking-widest uppercase font-orbitron"
-                            duration={revealState.location ? 800 : 0}
-                        />
+                        <motion.div
+                            key={revealState.location ? 'revealed' : 'hidden'}
+                            initial={{ opacity: 0, y: 2 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.4 }}
+                            className="text-xs font-bold font-mono text-slate-800 tracking-wider uppercase"
+                        >
+                            {revealState.location ? decrypted.location : "Hover to Reveal"}
+                        </motion.div>
                     </div>
                 </div>
             </div>
@@ -101,9 +82,9 @@ export const ContactHub = ({ data }: ContactHubProps) => {
                 <ContactCard
                     type="phone"
                     icon={Phone}
-                    label={revealState.phone ? 'Phone_Line' : 'LINE_LOCKED'}
+                    label="Phone"
                     value={decrypted.phone}
-                    displayValue={revealState.phone ? decrypted.phone : 'XXXXXXXXXXXX'}
+                    displayValue={revealState.phone ? decrypted.phone : 'Hover to Reveal'}
                     link={`tel:${decrypted.phone}`}
                     isRevealed={revealState.phone}
                     onCopy={handleCopy}
@@ -113,9 +94,9 @@ export const ContactHub = ({ data }: ContactHubProps) => {
                 <ContactCard
                     type="email"
                     icon={Mail}
-                    label={revealState.email ? 'E-Mail_Address' : 'CHNL_ENCRYPTED'}
+                    label="Email"
                     value={decrypted.email}
-                    displayValue={revealState.email ? decrypted.email : 'REDACTED@VAULT.OS'}
+                    displayValue={revealState.email ? decrypted.email : 'Hover to Reveal'}
                     link={`mailto:${decrypted.email}`}
                     isRevealed={revealState.email}
                     onCopy={handleCopy}
@@ -125,9 +106,9 @@ export const ContactHub = ({ data }: ContactHubProps) => {
                 <ContactCard
                     type="linkedin"
                     icon={Linkedin}
-                    label={revealState.linkedin ? 'LinkedIn_Portal' : 'PORTAL_LOCKED'}
+                    label="LinkedIn"
                     value={decrypted.linkedin}
-                    displayValue={revealState.linkedin ? 'ivan-deineka' : 'IDENT_LOCKED'}
+                    displayValue={revealState.linkedin ? 'ivan-deineka' : 'Hover to Reveal'}
                     link={decrypted.linkedin}
                     isExternal={true}
                     isRevealed={revealState.linkedin}
@@ -138,9 +119,9 @@ export const ContactHub = ({ data }: ContactHubProps) => {
                 <ContactCard
                     type="github"
                     icon={Github}
-                    label={revealState.github ? 'GitHub_Archive' : 'ARCHIVE_LOCKED'}
+                    label="GitHub"
                     value={decrypted.github}
-                    displayValue={revealState.github ? 'exdevil7' : 'IDENT_LOCKED'}
+                    displayValue={revealState.github ? 'exdevil7' : 'Hover to Reveal'}
                     link={decrypted.github}
                     isExternal={true}
                     isRevealed={revealState.github}
@@ -152,4 +133,3 @@ export const ContactHub = ({ data }: ContactHubProps) => {
         </div>
     );
 };
-

@@ -13,25 +13,26 @@ export const Header = () => {
     ];
 
     return (
-        <header className="fixed top-0 left-0 right-0 z-[60] bg-retro-black/80 backdrop-blur-xl border-b border-retro-purple/30">
-            <div className="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+        <header className="fixed top-0 left-0 right-0 z-[60] bg-soft-surface/40 backdrop-blur-xl border-b border-slate-200/60">
+            <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
                 <a href="#top" className="group/logo">
                     <motion.div
-                        initial={{ opacity: 0, x: -20 }}
+                        initial={{ opacity: 0, x: -10 }}
                         animate={{ opacity: 1, x: 0 }}
-                        className="text-2xl font-black font-orbitron tracking-tighter italic gradient-text px-2 group-hover/logo:neon-text-cyan transition-all"
+                        transition={{ duration: 0.7, ease: [0, 0, 0.2, 1] }}
+                        className="text-xs font-bold tracking-[0.25em] text-slate-800 uppercase transition-colors group-hover/logo:text-dusty-blue font-mono"
                     >
-                        CYBER_CV_OS
+                        IVAN DEINEKA — CV
                     </motion.div>
                 </a>
 
                 {/* Desktop Navigation */}
-                <nav className="hidden md:flex items-center gap-10 text-xs font-black uppercase tracking-widest font-orbitron">
+                <nav className="hidden md:flex items-center gap-8 text-[9px] font-bold uppercase tracking-[0.25em] font-mono">
                     {navLinks.map((link) => (
                         <a
                             key={link.name}
                             href={link.href}
-                            className="text-slate-100 hover:text-retro-pink hover:neon-text-pink transition-all"
+                            className="text-slate-500 hover:text-dusty-blue transition-colors"
                         >
                             {link.name}
                         </a>
@@ -40,10 +41,10 @@ export const Header = () => {
 
                 {/* Mobile Menu Button */}
                 <button
-                    className="md:hidden text-retro-cyan hover:text-retro-pink transition-colors"
+                    className="md:hidden text-slate-500 hover:text-dusty-blue transition-colors"
                     onClick={() => setIsMenuOpen(!isMenuOpen)}
                 >
-                    {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
+                    {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
                 </button>
             </div>
 
@@ -54,14 +55,14 @@ export const Header = () => {
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: 'auto' }}
                         exit={{ opacity: 0, height: 0 }}
-                        className="md:hidden bg-retro-black/95 backdrop-blur-2xl border-b border-retro-purple/30 overflow-hidden"
+                        className="md:hidden bg-soft-surface/90 backdrop-blur-xl border-b border-slate-200/60 overflow-hidden"
                     >
-                        <nav className="flex flex-col items-center py-8 gap-6 text-sm font-black uppercase tracking-[0.2em] font-orbitron">
+                        <nav className="flex flex-col items-center py-6 gap-4 text-[11px] font-bold uppercase tracking-[0.2em]">
                             {navLinks.map((link) => (
                                 <a
                                     key={link.name}
                                     href={link.href}
-                                    className="text-slate-100 hover:text-retro-pink transition-all w-full text-center py-2"
+                                    className="text-slate-500 hover:text-dusty-blue transition-colors w-full text-center py-2"
                                     onClick={() => setIsMenuOpen(false)}
                                 >
                                     {link.name}

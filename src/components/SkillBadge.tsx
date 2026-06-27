@@ -7,9 +7,9 @@ export const SkillBadge = ({ skill, url }: { skill: string; url?: string }) => {
 
     return (
         <Component
-            whileHover={{ scale: 1.1, rotate: -2 }}
+            whileHover={{ scale: 1.03 }}
             className={cn(
-                "px-4 py-1 text-xs font-bold uppercase trekking-widest bg-retro-black border border-retro-cyan/40 text-retro-cyan hover:border-retro-pink hover:text-retro-pink shadow-[2px_2px_0px_rgba(255,0,255,0.3)] transition-all",
+                "px-4 py-2 text-[10px] font-bold uppercase tracking-widest bg-soft-surface/60 border border-slate-200/60 text-dusty-blue hover:border-sage-green/40 hover:text-sage-green transition-all duration-300 rounded-full",
                 url && "cursor-pointer"
             )}
             {...additionalProps}

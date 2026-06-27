@@ -22,7 +22,7 @@ const highlightText = (text: string) => {
     return parts.map((part, index) => {
         if (part.startsWith('**') && part.endsWith('**')) {
             return (
-                <span key={index} className="text-retro-cyan font-bold">
+                <span key={index} className="text-dusty-blue font-bold">
                     {part.slice(2, -2)}
                 </span>
             );
@@ -33,16 +33,17 @@ const highlightText = (text: string) => {
 
 export const MissionLog = ({ experience }: MissionLogProps) => {
     return (
-        <Section title="Mission Log" icon={Briefcase} id="experience">
+        <Section title="Experience" icon={Briefcase} id="experience">
             <div className="space-y-12">
                 {experience.map((exp, idx) => (
                     <motion.div
                         key={idx}
-                        initial={{ opacity: 0, y: 30 }}
+                        initial={{ opacity: 0, y: 10 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        whileHover={exp.companyUrl ? { y: -5 } : {}}
-                        className={`card relative group transition-all duration-300 ${exp.companyUrl ? "hover:border-retro-cyan/40 hover:bg-retro-cyan/5 shadow-[0_0_20px_rgba(0,255,255,0.05)] cursor-pointer" : ""}`}
+                        transition={{ duration: 0.7, ease: [0, 0, 0.2, 1] }}
+                        whileHover={exp.companyUrl ? { y: -2 } : {}}
+                        className={`card relative group transition-all duration-300 ${exp.companyUrl ? "hover:border-dusty-blue/30 hover:bg-soft-surface/80 cursor-pointer" : ""}`}
                     >
                         {exp.companyUrl && (
                             <a
@@ -55,48 +56,47 @@ export const MissionLog = ({ experience }: MissionLogProps) => {
                         )}
                         <div className="flex flex-wrap items-start justify-between gap-4 mb-6 relative z-10">
                             <div>
-                                <h3 className="text-2xl font-black text-retro-pink font-orbitron tracking-tight mb-2 uppercase italic">
+                                <h3 className="text-xl font-bold text-slate-800 tracking-tight mb-1 uppercase">
                                     {exp.role}
                                 </h3>
                                 <div className="flex items-center gap-3">
-                                    <div className="text-lg font-bold text-retro-cyan tracking-widest uppercase group-hover:text-white transition-colors">
+                                    <div className="text-base font-semibold text-dusty-blue tracking-wider uppercase transition-colors">
                                         {exp.company}
                                     </div>
                                     {exp.domain && (
-                                        <div className="text-xs font-bold text-slate-400 border border-slate-600 px-2 py-1 rounded bg-slate-800/50">
+                                        <div className="text-[10px] font-semibold text-slate-500 border border-slate-200/60 px-2 py-0.5 rounded-lg bg-soft-surface/40">
                                             {exp.domain}
                                         </div>
                                     )}
                                 </div>
                             </div>
-                            <span className="text-[10px] font-black font-orbitron bg-retro-purple text-white px-4 py-2 uppercase tracking-[0.3em] skew-x-[-12deg]">
+                            <span className="text-[9px] font-bold bg-soft-surface/45 text-slate-700 border border-slate-200/60 px-2.5 py-1 uppercase tracking-wider rounded-lg font-mono">
                                 {exp.period}
                             </span>
                         </div>
 
                         <ul className="space-y-4 mb-8 relative z-10">
                             {exp.responsibilities.map((resp, rIdx) => (
-                                <li key={rIdx} className="flex gap-4 text-slate-300 font-medium leading-relaxed">
-                                    <div className="mt-2 w-2 h-2 bg-retro-cyan shadow-[0_0_5px_#00ffff] shrink-0"></div>
+                                <li key={rIdx} className="flex gap-4 text-slate-700 font-medium leading-relaxed">
+                                    <div className="mt-2 w-1.5 h-1.5 bg-dusty-blue shrink-0 rounded-full"></div>
                                     <span>{resp}</span>
                                 </li>
                             ))}
                         </ul>
 
-                        <div className="bg-retro-purple/5 p-6 border-t-2 border-retro-purple/30 relative z-10">
-                            <h4 className="text-xs font-black font-orbitron text-retro-pink mb-4 flex items-center gap-2 uppercase tracking-widest">
-                                <Award size={16} />
-                                ACHIEVEMENTS_UNLOCKED
+                        <div className="mt-8 pt-6 border-t border-slate-200/60 relative z-10">
+                            <h4 className="text-[10px] font-bold text-slate-700 mb-4 flex items-center gap-2 uppercase tracking-widest font-mono">
+                                <Award size={14} />
+                                Key Achievements
                             </h4>
                             <ul className="space-y-4">
                                 {exp.achievements.map((ach, aIdx) => (
-                                    <li key={aIdx} className="text-sm text-slate-400 italic">
-                                        <div className="mb-2">{">> "}{highlightText(ach.lvl1)}</div>
+                                    <li key={aIdx} className="text-sm text-slate-600 leading-relaxed">
+                                        <div className="font-medium text-slate-800">{highlightText(ach.lvl1)}</div>
                                         {ach.lvl2 && ach.lvl2.length > 0 && (
-                                            <ul className="pl-6 space-y-2">
+                                            <ul className="pl-5 space-y-2 mt-2 list-disc marker:text-sage-green/40">
                                                 {ach.lvl2.map((subAch, saIdx) => (
-                                                    <li key={saIdx} className="text-sm text-slate-400 italic flex">
-                                                        <span className="mr-2">-</span>
+                                                    <li key={saIdx} className="text-[13px] text-slate-500">
                                                         <span>{highlightText(subAch)}</span>
                                                     </li>
                                                 ))}

@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Check, Link as ExternalLink } from 'lucide-react';
-import { ScrambleEffect } from './ScrambleEffect';
 import { cn } from '../utils/utils';
 
 export interface ContactCardProps {
@@ -34,22 +33,22 @@ export const ContactCard = ({
 
     const styles = {
         cyan: {
-            border: isCopied ? 'border-retro-cyan' : 'border-retro-cyan/20 bg-retro-purple/5 hover:border-retro-cyan/60 hover:bg-retro-cyan/5',
-            text: `text-retro-cyan`,
-            label: 'text-retro-cyan/60',
-            iconBg: 'bg-retro-cyan/10',
-            gradient: 'via-retro-cyan/5',
-            boxShadow: '0 0 20px rgba(0, 255, 255, 0.4)',
-            accent: 'text-retro-pink'
+            border: isCopied ? 'border-dusty-blue bg-soft-surface/90' : 'border-slate-200/60 bg-soft-surface/65 backdrop-blur-md hover:border-dusty-blue/40',
+            text: `text-dusty-blue`,
+            label: 'text-dusty-blue/85',
+            iconBg: 'bg-dusty-blue/8',
+            gradient: 'via-dusty-blue/5',
+            boxShadow: 'none',
+            accent: 'text-sage-green'
         },
         pink: {
-            border: isCopied ? 'border-retro-pink' : 'border-retro-pink/20 bg-retro-purple/5 hover:border-retro-pink/60 hover:bg-retro-pink/5',
-            text: `text-retro-pink`,
-            label: 'text-retro-pink/60',
-            iconBg: 'bg-retro-pink/10',
-            gradient: 'via-retro-pink/5',
-            boxShadow: '0 0 20px rgba(255, 0, 255, 0.4)',
-            accent: 'text-retro-cyan'
+            border: isCopied ? 'border-sage-green bg-soft-surface/90' : 'border-slate-200/60 bg-soft-surface/65 backdrop-blur-md hover:border-sage-green/40',
+            text: `text-sage-green`,
+            label: 'text-sage-green/85',
+            iconBg: 'bg-sage-green/8',
+            gradient: 'via-sage-green/5',
+            boxShadow: 'none',
+            accent: 'text-dusty-blue'
         }
     };
 
@@ -60,7 +59,7 @@ export const ContactCard = ({
             onClick={() => onCopy(value, type)}
             onMouseEnter={() => onHover(type)}
             className={cn(
-                "relative group cursor-pointer border px-4 py-3 transition-all duration-500 overflow-hidden",
+                "relative group cursor-pointer border px-4 py-3 transition-all duration-300 overflow-hidden rounded-xl",
                 theme.border
             )}
             style={{ boxShadow: isCopied ? theme.boxShadow : 'none' }}
@@ -68,30 +67,34 @@ export const ContactCard = ({
             <div className={cn("absolute inset-0 bg-gradient-to-r from-transparent to-transparent -translate-x-full group-hover:animate-[shimmer_2s_infinite]", theme.gradient)}></div>
             <div className="grid grid-cols-[3rem_1fr_auto] items-center gap-2 relative z-10 w-full">
                 <div className={cn(
-                    "w-10 h-10 flex items-center justify-center transition-colors duration-300 flex-shrink-0 rounded-sm",
+                    "w-10 h-10 flex items-center justify-center transition-colors duration-300 flex-shrink-0 rounded-lg",
                     theme.iconBg,
                     isCopied ? theme.accent : theme.text
                 )}>
                     {isCopied ? <Check size={18} /> : React.createElement(icon, { size: 18 })}
                 </div>
                 <div className="flex flex-col overflow-hidden">
-                    <span className={cn("text-[8px] font-black font-orbitron tracking-[0.2em] uppercase", theme.label)}>{label}</span>
-                    <ScrambleEffect
-                        text={displayValue}
-                        className="text-xs font-bold font-mono text-white truncate font-orbitron tracking-widest uppercase"
-                        duration={800}
-                    />
+                    <span className={cn("text-[10px] font-bold tracking-wider uppercase", theme.label)}>{label}</span>
+                    <motion.div
+                        key={displayValue}
+                        initial={{ opacity: 0, y: 2 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.4 }}
+                        className="text-xs font-bold font-mono text-slate-800 truncate tracking-wider uppercase"
+                    >
+                        {displayValue}
+                    </motion.div>
                 </div>
                 <div className="flex items-center gap-2">
                     {isCopied && (
-                        <motion.span initial={{ opacity: 0, x: 5 }} animate={{ opacity: 1, x: 0 }} className={cn("text-[8px] font-black font-orbitron uppercase", theme.accent)}>Copied</motion.span>
+                        <motion.span initial={{ opacity: 0, y: 2 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, ease: [0, 0, 0.2, 1] }} className={cn("text-[9px] font-bold uppercase tracking-wider", theme.accent)}>Copied</motion.span>
                     )}
                     <a
                         href={link}
                         target={isExternal ? "_blank" : undefined}
                         rel={isExternal ? "noopener noreferrer" : undefined}
                         onClick={(e) => e.stopPropagation()}
-                        className={cn("p-2 rounded-sm transition-colors", isPink ? "text-retro-pink/40 hover:text-retro-pink hover:bg-retro-pink/10" : "text-retro-cyan/40 hover:text-retro-cyan hover:bg-retro-cyan/10")}
+                        className={cn("p-2 rounded-lg transition-colors", isPink ? "text-sage-green/40 hover:text-sage-green hover:bg-sage-green/10" : "text-dusty-blue/40 hover:text-dusty-blue hover:bg-dusty-blue/10")}
                         title={label}
                     >
                         <ExternalLink size={16} />

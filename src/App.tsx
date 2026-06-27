@@ -15,11 +15,12 @@ function App() {
   const [showContent, setShowContent] = useState(false);
 
   return (
-    <div id="top" className="min-h-screen bg-retro-black text-slate-200 selection:bg-retro-pink selection:text-white">
-      {/* Retrowave Background Effects */}
-      <div className="scanlines"></div>
-      <div className="retro-grid"></div>
-      <div className="retro-sun"></div>
+    <div id="top" className="min-h-screen bg-soft-bg text-slate-800 selection:bg-sage-green/30 selection:text-white relative">
+      {/* Ambient Lounge Glows & Flat Technical Grid */}
+      <div className="lounge-bloom-1"></div>
+      <div className="lounge-bloom-2"></div>
+      <div className="lounge-bloom-3"></div>
+      <div className="soft-grid"></div>
 
       <Header />
 
@@ -35,9 +36,9 @@ function App() {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 1 }}
+            transition={{ duration: 0.7, ease: [0, 0, 0.2, 1] }}
           >
-            <div className="flex flex-col lg:flex-row gap-16 items-stretch mb-32">
+            <div className="flex flex-col lg:flex-row gap-16 items-stretch mb-16">
               <SummarySection summary={cvData.summary} hudData={cvData.hudData} intel={cvData.intel} />
               <ContactHub data={cvData} />
             </div>

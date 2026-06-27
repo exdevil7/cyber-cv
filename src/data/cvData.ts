@@ -1,6 +1,6 @@
 export const cvData = {
     name: "Ivan Deineka",
-    role: "Senior Software Engineer",
+    role: "// Senior Software Engineer",
     location: "VAULT_v1<CTsrNG5iFykwIyssJw==>",
     phone: "VAULT_v1<aXF6cnt3d3t1cnNyeg==>",
     email: "VAULT_v1<KzQjLCYnKywnKSN1AiUvIysubCEtLw==>",
@@ -200,7 +200,7 @@ export const cvData = {
             url: "https://www.udemy.com/certificate/UC-6bd17939-ff7e-432a-ae66-6009278f46ec/"
         },
     ],
-    version: "v1.2.0",
+    version: "v2.0.0",
     hudData: {
         expLevel: "07_Y",
         engine: "JAVA_SPRING",
@@ -211,23 +211,20 @@ export const cvData = {
         {
             id: "File_01",
             type: "text",
-            label: "Decrypted_Intel: File_01",
-            content: "DECRYPTED: While waiting for my next mission, I started vibecoding. [SUCCESS] One Friday night later, this dashboard went live. Ready to deploy on your signal. // EOF",
-            footer: "Auth_Sequence: v-engineer-01 // Verified"
+            content: "While waiting for my next role, I started building this UI. One Friday night later, this dashboard went live.",
+            datetime: "2026.02.13 // 23:45"
         },
         {
             id: "Audio_Log_01",
             type: "audio",
-            label: "Decrypted_Intel: Audio_Log_01",
-            trackId: "17unhA5Gnc1nLFdg3dKmuO",
-            footer: "Auth_Sequence: v-audio-01 // Verified"
+            trackId: "3NwTDLpZRmyOTaOtGoVm8X"
         },
         {
             id: "File_02",
             type: "text",
-            label: "Decrypted_Intel: File_02",
-            content: "DECRYPTED: Assigned to build a workflow engine for security screening & threat detection system. Onboarding complete. Ready for first query. // EOF",
-            footer: "Auth_Sequence: v-engineer-01 // Verified"
+            label: "Recent Milestone",
+            content: "Assigned to build a workflow engine for security screening & threat detection system. Onboarding complete. Ready for first query.",
+            datetime: "2026.04.01 // 10:15"
         }
     ]
 };
