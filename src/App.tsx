@@ -28,11 +28,7 @@ function App() {
           pdfUrl={cvData.pdfUrl}
         />
 
-        <motion.div
-          initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.7, ease: [0, 0, 0.2, 1] }}
-          >
+        <div className="animate-fade-in">
             <div className="flex flex-col lg:flex-row gap-16 items-stretch mb-16">
               <SummarySection summary={cvData.summary} hudData={cvData.hudData} intel={cvData.intel} />
               <ContactHub data={cvData} />
@@ -42,7 +38,7 @@ function App() {
             <MissionLog experience={cvData.experience} />
             <Academy education={cvData.education} languages={cvData.languages} />
             <Certifications certifications={cvData.certifications} />
-        </motion.div>
+        </div>
       </main>
 
       <Footer name={cvData.name} version={cvData.version} />

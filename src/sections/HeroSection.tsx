@@ -12,12 +12,7 @@ export const HeroSection = ({ name, role, pdfUrl }: HeroSectionProps) => {
 
     return (
         <div id="about" className="mb-10 flex flex-col md:flex-row gap-16 items-center md:items-start text-center md:text-left">
-            <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.7, ease: [0, 0, 0.2, 1] }}
-                className="flex-1 w-full"
-            >
+            <div className="flex-1 w-full animate-fade-in">
                 <h1 className="text-4xl md:text-6xl font-bold mb-4 leading-none tracking-tight text-slate-800 uppercase font-display">
                     {name}
                 </h1>
@@ -38,7 +33,7 @@ export const HeroSection = ({ name, role, pdfUrl }: HeroSectionProps) => {
                         </a>
                     </div>
                 )}
-            </motion.div>
+            </div>
         </div>
     );
 };
