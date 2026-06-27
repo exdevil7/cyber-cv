@@ -7,7 +7,7 @@ export const cvData = {
     linkedin: "VAULT_v1<KjY2MjF4bW01NTVsLissKScmKyxsIS0vbSssbSs0IyxvJicrLCcpI28gIHNzd3VzenBt>",
     github: "VAULT_v1<KjY2MjF4bW0lKzYqNyBsIS0vbSc6Jic0Ky51>",
     pdfUrl: "/Deineka CV.pdf",
-    summary: "I'm a Java Developer with over 6 years of experience in developing and maintaining Java applications. Proficient in all phases of the software development lifecycle, with a solid background in back-end development, API integration, and microservices architecture. Adept at collaborating with cross-functional teams to deliver robust and scalable solutions.",
+    summary: "I'm a Java Developer with 7 years of experience in developing and maintaining Java applications. Proficient in all phases of the software development lifecycle, with a solid background in back-end development, API integration, and microservices architecture. Adept at collaborating with cross-functional teams to deliver robust and scalable solutions.",
     skills: [
         {
             category: "Programming Languages",
@@ -114,11 +114,27 @@ export const cvData = {
     ],
     experience: [
         {
+            role: "Senior Software Engineer",
+            company: "Edvantis",
+            companyUrl: "https://www.edvantis.com/",
+            period: "Apr 2026 - Present",
+            domain: "Event-Driven Workflow Orchestration",
+            technologies: ["Java", "Spring Boot", "Kafka", "PostgreSQL", "Opensearch", "..."],
+            responsibilities: [
+                "// TODO: figure out what I'm doing"
+            ],
+            achievements: [
+                {
+                    lvl1: "// TODO: try my best to fill with actual achievements"
+                }
+            ]
+        },
+        {
             role: "Java Developer",
             company: "SYTOSS",
             companyUrl: "https://www.sytoss.com/",
             period: "Apr 2019 - Jan 2026",
-            domain: "Telecom",
+            domain: "Telecommunications",
             technologies: ["Java", "Spring Boot", "Hibernate", "PL/SQL", "OpenShift", "Jenkins"],
             responsibilities: [
                 "Maintained and enhanced enterprise-level Spring Boot applications.",
@@ -186,9 +202,9 @@ export const cvData = {
     ],
     version: "v1.2.0",
     hudData: {
-        expLevel: "06_Y+",
+        expLevel: "07_Y",
         engine: "JAVA_SPRING",
-        status: "OPEN_TO_WORK"
+        status: "HIRED"
     },
 
     intel: [
@@ -200,11 +216,18 @@ export const cvData = {
             footer: "Auth_Sequence: v-engineer-01 // Verified"
         },
         {
-            id: "Audio_Log_02",
+            id: "Audio_Log_01",
             type: "audio",
-            label: "Decrypted_Intel: Audio_Log_02",
+            label: "Decrypted_Intel: Audio_Log_01",
             trackId: "17unhA5Gnc1nLFdg3dKmuO",
             footer: "Auth_Sequence: v-audio-01 // Verified"
+        },
+        {
+            id: "File_02",
+            type: "text",
+            label: "Decrypted_Intel: File_02",
+            content: "DECRYPTED: Assigned to build a workflow engine for security screening & threat detection system. Onboarding complete. Ready for first query. // EOF",
+            footer: "Auth_Sequence: v-engineer-01 // Verified"
         }
     ]
 };
