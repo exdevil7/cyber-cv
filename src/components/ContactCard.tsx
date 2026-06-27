@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Check, Link as ExternalLink } from 'lucide-react';
+import { Check, Link as ExternalLink, Copy } from 'lucide-react';
 import { cn } from '../utils/utils';
 
 export interface ContactCardProps {
@@ -56,7 +56,13 @@ export const ContactCard = ({
 
     return (
         <div
-            onClick={() => onCopy(value, type)}
+            onClick={() => {
+                if (isExternal) {
+                    window.open(link, '_blank', 'noopener,noreferrer');
+                } else {
+                    onCopy(value, type);
+                }
+            }}
             onMouseEnter={() => onHover(type)}
             className={cn(
                 "relative group cursor-pointer border px-4 py-3 transition-all duration-300 overflow-hidden rounded-xl",
@@ -89,16 +95,29 @@ export const ContactCard = ({
                     {isCopied && (
                         <motion.span initial={{ opacity: 0, y: 2 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, ease: [0, 0, 0.2, 1] }} className={cn("text-[9px] font-bold uppercase tracking-wider", theme.accent)}>Copied</motion.span>
                     )}
-                    <a
-                        href={link}
-                        target={isExternal ? "_blank" : undefined}
-                        rel={isExternal ? "noopener noreferrer" : undefined}
-                        onClick={(e) => e.stopPropagation()}
-                        className={cn("p-2 rounded-lg transition-colors", isPink ? "text-sage-green/40 hover:text-sage-green hover:bg-sage-green/10" : "text-dusty-blue/40 hover:text-dusty-blue hover:bg-dusty-blue/10")}
-                        title={label}
-                    >
-                        <ExternalLink size={16} />
-                    </a>
+                    {isExternal ? (
+                        <a
+                            href={link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={(e) => e.stopPropagation()}
+                            className={cn("p-2 rounded-lg transition-colors", isPink ? "text-sage-green/40 hover:text-sage-green hover:bg-sage-green/10" : "text-dusty-blue/40 hover:text-dusty-blue hover:bg-dusty-blue/10")}
+                            title={`Open ${label}`}
+                        >
+                            <ExternalLink size={16} />
+                        </a>
+                    ) : (
+                        <button
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                onCopy(value, type);
+                            }}
+                            className={cn("p-2 rounded-lg transition-colors", isPink ? "text-sage-green/40 hover:text-sage-green hover:bg-sage-green/10" : "text-dusty-blue/40 hover:text-dusty-blue hover:bg-dusty-blue/10")}
+                            title={`Copy ${label}`}
+                        >
+                            <Copy size={16} />
+                        </button>
+                    )}
                 </div>
             </div>
         </div>

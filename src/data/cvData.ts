@@ -1,4 +1,7 @@
 export const cvData = {
+    // ==========================================
+    // 1. PERSONAL INFO & CONTACTS
+    // ==========================================
     name: "Ivan Deineka",
     role: "// Senior Software Engineer",
     location: "VAULT_v1<CTsrNG5iFykwIyssJw==>",
@@ -7,6 +10,40 @@ export const cvData = {
     linkedin: "VAULT_v1<KjY2MjF4bW01NTVsLissKScmKyxsIS0vbSssbSs0IyxvJicrLCcpI28gIHNzd3VzenBt>",
     github: "VAULT_v1<KjY2MjF4bW0lKzYqNyBsIS0vbSc6Jic0Ky51>",
     pdfUrl: "/Deineka CV.pdf",
+
+    // ==========================================
+    // 2. HUD & META DATA
+    // ==========================================
+    version: "v2.0.4",
+    hudData: {
+        expLevel: "07_Y",
+        engine: "JAVA_SPRING",
+        status: "HIRED"
+    },
+    intel: [
+        {
+            id: "File_01",
+            type: "text",
+            content: "While waiting for my next role, I started building this UI. One Friday night later, this dashboard went live.",
+            datetime: "2026.02.13 // 23:45"
+        },
+        {
+            id: "Audio_Log_01",
+            type: "audio",
+            trackId: "3NwTDLpZRmyOTaOtGoVm8X"
+        },
+        {
+            id: "File_02",
+            type: "text",
+            label: "Recent Milestone",
+            content: "Assigned to build a workflow engine for security screening & threat detection system. Onboarding complete. Ready for first query.",
+            datetime: "2026.04.01 // 10:15"
+        }
+    ],
+
+    // ==========================================
+    // 3. PROFILE & SKILLS
+    // ==========================================
     summary: "I'm a Java Developer with 7 years of experience in developing and maintaining Java applications. Proficient in all phases of the software development lifecycle, with a solid background in back-end development, API integration, and microservices architecture. Adept at collaborating with cross-functional teams to deliver robust and scalable solutions.",
     skills: [
         {
@@ -112,6 +149,10 @@ export const cvData = {
             ]
         }
     ],
+
+    // ==========================================
+    // 4. PROFESSIONAL EXPERIENCE
+    // ==========================================
     experience: [
         {
             role: "Senior Software Engineer",
@@ -164,6 +205,10 @@ export const cvData = {
             ]
         }
     ],
+
+    // ==========================================
+    // 5. EDUCATION, LANGUAGES & CERTIFICATIONS
+    // ==========================================
     education: {
         degree: "Bachelor's degree, Automation Engineer",
         institution: "National Technical University «Kharkiv Polytechnic Institute»",
@@ -199,32 +244,5 @@ export const cvData = {
             name: "Spring Security Zero to Master along with JWT,OAUTH2 (Udemy)",
             url: "https://www.udemy.com/certificate/UC-6bd17939-ff7e-432a-ae66-6009278f46ec/"
         },
-    ],
-    version: "v2.0.3",
-    hudData: {
-        expLevel: "07_Y",
-        engine: "JAVA_SPRING",
-        status: "HIRED"
-    },
-
-    intel: [
-        {
-            id: "File_01",
-            type: "text",
-            content: "While waiting for my next role, I started building this UI. One Friday night later, this dashboard went live.",
-            datetime: "2026.02.13 // 23:45"
-        },
-        {
-            id: "Audio_Log_01",
-            type: "audio",
-            trackId: "3NwTDLpZRmyOTaOtGoVm8X"
-        },
-        {
-            id: "File_02",
-            type: "text",
-            label: "Recent Milestone",
-            content: "Assigned to build a workflow engine for security screening & threat detection system. Onboarding complete. Ready for first query.",
-            datetime: "2026.04.01 // 10:15"
-        }
     ]
 };
