@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+
 import { Award, Link as ExternalLink } from 'lucide-react';
 import { Section } from '../components/Section';
 
@@ -16,17 +16,11 @@ export const Certifications = ({ certifications }: CertificationsProps) => {
         <Section title="Certifications" icon={Award}>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {certifications.map((cert, cIdx) => (
-                    <motion.a
+                    <a
                         key={cIdx}
                         href={cert.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: cIdx * 0.1, duration: 0.5, ease: [0, 0, 0.2, 1] }}
-                        whileHover={{ y: -2 }}
-                        whileTap={{ scale: 0.99 }}
                         className="card p-5 flex flex-col gap-4 text-center group hover:border-dusty-blue/30 hover:bg-soft-surface/80 transition-all duration-300"
                     >
                         <div className="relative mx-auto">
@@ -37,7 +31,7 @@ export const Certifications = ({ certifications }: CertificationsProps) => {
                             <span className="text-[8px] font-bold text-dusty-blue uppercase tracking-widest">Verify Credential</span>
                             <ExternalLink size={9} className="text-dusty-blue" />
                         </div>
-                    </motion.a>
+                    </a>
                 ))}
             </div>
         </Section>

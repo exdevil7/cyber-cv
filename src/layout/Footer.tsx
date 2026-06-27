@@ -11,7 +11,7 @@ export const Footer = ({ name, version }: FooterProps) => {
                     Connect
                 </div>
                 <p className="text-[10px] uppercase tracking-[0.15em] text-slate-500 mb-4 flex flex-col md:flex-row items-center justify-center gap-2">
-                    <span>© {new Date().getFullYear()} {name}.</span>
+                    <span>© {new Date().getFullYear()} {name}</span>
                     <span className="hidden md:inline">•</span>
                     <span>Version {version}</span>
                 </p>

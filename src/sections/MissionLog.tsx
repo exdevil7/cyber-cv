@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+
 import { Briefcase, Award } from 'lucide-react';
 import { Section } from '../components/Section';
 
@@ -36,13 +36,8 @@ export const MissionLog = ({ experience }: MissionLogProps) => {
         <Section title="Experience" icon={Briefcase} id="experience">
             <div className="space-y-12">
                 {experience.map((exp, idx) => (
-                    <motion.div
+                    <div
                         key={idx}
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.7, ease: [0, 0, 0.2, 1] }}
-                        whileHover={exp.companyUrl ? { y: -2 } : {}}
                         className={`card relative group transition-all duration-300 ${exp.companyUrl ? "hover:border-dusty-blue/30 hover:bg-soft-surface/80 cursor-pointer" : ""}`}
                     >
                         {exp.companyUrl && (
@@ -106,7 +101,7 @@ export const MissionLog = ({ experience }: MissionLogProps) => {
                                 ))}
                             </ul>
                         </div>
-                    </motion.div>
+                    </div>
                 ))}
             </div>
         </Section>

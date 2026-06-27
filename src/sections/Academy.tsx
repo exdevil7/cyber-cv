@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+
 import { GraduationCap, Globe } from 'lucide-react';
 import { Section } from '../components/Section';
 
@@ -20,16 +20,11 @@ export const Academy = ({ education, languages }: AcademyProps) => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
             {/* Education */}
             <Section title="Education" icon={GraduationCap} id="education">
-                <motion.a
+                <a
                     href={education.institutionUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     title={`Visit ${education.institution}`}
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, ease: [0, 0, 0.2, 1] }}
-                    whileHover={{ y: -2 }}
                     className="card h-full block cursor-pointer group hover:border-dusty-blue/30 hover:bg-soft-surface/80 transition-all duration-300"
                 >
                     <h3 className="text-lg font-bold text-slate-800 uppercase mb-3">{education.degree}</h3>
@@ -37,7 +32,7 @@ export const Academy = ({ education, languages }: AcademyProps) => {
                         <p className="text-dusty-blue font-semibold tracking-wider uppercase transition-colors">{education.institution}</p>
                     </div>
                     <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest font-mono">{education.period}</span>
-                </motion.a>
+                </a>
             </Section>
 
             {/* Languages */}
