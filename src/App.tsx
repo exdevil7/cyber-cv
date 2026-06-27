@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import { cvData } from './data/cvData';
 import { HeroSection } from './sections/HeroSection';
 import { ContactHub } from './sections/ContactHub';
