@@ -21,8 +21,8 @@ export const Certifications = ({ certifications }: CertificationsProps) => {
                         href={cert.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        initial={{ opacity: 0, y: 10 }}
-                        whileInView={{ opacity: 1, y: 0 }}
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
                         viewport={{ once: true }}
                         transition={{ delay: cIdx * 0.1, duration: 0.5, ease: [0, 0, 0.2, 1] }}
                         whileHover={{ y: -2 }}

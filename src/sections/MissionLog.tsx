@@ -38,8 +38,8 @@ export const MissionLog = ({ experience }: MissionLogProps) => {
                 {experience.map((exp, idx) => (
                     <motion.div
                         key={idx}
-                        initial={{ opacity: 0, y: 10 }}
-                        whileInView={{ opacity: 1, y: 0 }}
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.7, ease: [0, 0, 0.2, 1] }}
                         whileHover={exp.companyUrl ? { y: -2 } : {}}
