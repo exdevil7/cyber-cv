@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { cvData } from './data/cvData';
 import { HeroSection } from './sections/HeroSection';
@@ -12,8 +11,6 @@ import { SummarySection } from './sections/SummarySection';
 import { Header } from './layout/Header';
 
 function App() {
-  const [showContent, setShowContent] = useState(false);
-
   return (
     <div id="top" className="min-h-screen bg-soft-bg text-slate-800 selection:bg-sage-green/30 selection:text-white relative">
       {/* Ambient Lounge Glows & Flat Technical Grid */}
@@ -29,12 +26,10 @@ function App() {
           name={cvData.name}
           role={cvData.role}
           pdfUrl={cvData.pdfUrl}
-          onContentReady={() => setShowContent(true)}
         />
 
-        {showContent && (
-          <motion.div
-            initial={{ opacity: 0 }}
+        <motion.div
+          initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.7, ease: [0, 0, 0.2, 1] }}
           >
@@ -47,11 +42,10 @@ function App() {
             <MissionLog experience={cvData.experience} />
             <Academy education={cvData.education} languages={cvData.languages} />
             <Certifications certifications={cvData.certifications} />
-          </motion.div>
-        )}
+        </motion.div>
       </main>
 
-      {showContent && <Footer name={cvData.name} version={cvData.version} />}
+      <Footer name={cvData.name} version={cvData.version} />
     </div>
   );
 }

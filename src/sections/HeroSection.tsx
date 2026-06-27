@@ -1,18 +1,14 @@
-import { useEffect } from 'react';
+
 import { motion } from 'framer-motion';
 import { FileText } from 'lucide-react';
 
 interface HeroSectionProps {
     name: string;
     role: string;
-    onContentReady?: () => void;
     pdfUrl?: string;
 }
 
-export const HeroSection = ({ name, role, onContentReady, pdfUrl }: HeroSectionProps) => {
-    useEffect(() => {
-        onContentReady?.();
-    }, [onContentReady]);
+export const HeroSection = ({ name, role, pdfUrl }: HeroSectionProps) => {
 
     return (
         <div id="about" className="mb-10 flex flex-col md:flex-row gap-16 items-center md:items-start text-center md:text-left">
