@@ -1,26 +1,14 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Moon, Sun } from 'lucide-react';
 
-export const Header = () => {
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [isDarkMode, setIsDarkMode] = useState(() => {
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme) {
-            return savedTheme === 'dark';
-        }
-        return false; // Default to light mode
-    });
+interface HeaderProps {
+    isDarkMode: boolean;
+    setIsDarkMode: (val: boolean) => void;
+}
 
-    useEffect(() => {
-        if (isDarkMode) {
-            document.documentElement.classList.add('dark');
-            localStorage.setItem('theme', 'dark');
-        } else {
-            document.documentElement.classList.remove('dark');
-            localStorage.setItem('theme', 'light');
-        }
-    }, [isDarkMode]);
+export const Header = ({ isDarkMode, setIsDarkMode }: HeaderProps) => {
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const navLinks = [
         { name: 'About', href: '#about' },
